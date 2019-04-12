@@ -41,11 +41,16 @@ return [
             'provider' => 'users',
         ],
 
+        'admin' => [
+            'driver' => 'checkAdmin',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
-        ]
+        ],
+
     ],
 
     /*

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Auth\EloquentUserProvider;
+use App\Extensions\AdminGuard;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Auth::extend('checkAdmin', function ($app) {
+            return new AdminGuard($app->request->user());
+        });
     }
 }

@@ -8,7 +8,7 @@
             @endif
         </ul>
 
-        @auth
+        @auth('admin')
             @if (!empty(config('settings.backend.menu')))
                 <hr>
                 <h6>Adminisration menu</h6>

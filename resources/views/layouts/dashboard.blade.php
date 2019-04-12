@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }}{{ isset($title)?' - '.$title:'' }}</title>
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -54,16 +54,17 @@
                 </nav>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    @section('title')
+                        @include('_title')
+                    @show
                     @yield('content')
                 </main>
         </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script>
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-3.4.0.min.js"><\/script>')</script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="{{ asset('js/dashboard.js') }}"></script>
     </body>
 </html>

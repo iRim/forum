@@ -1,6 +1,6 @@
 <?php
 
-Route::middleware(['auth'])->namespace('Backend')->prefix('backend')->name('backend.')->group(function(){
+Route::namespace('Backend')->prefix('backend')->name('backend.')->middleware(['auth','admin'])->group(function(){
 
     Route::get('/',function(){
         return redirect()->route('backend.categories.list');
@@ -9,7 +9,10 @@ Route::middleware(['auth'])->namespace('Backend')->prefix('backend')->name('back
     Route::prefix('categories')->name('categories.')->group(function(){
         Route::get('/','CategoriesController@index')->name('list');
         Route::get('/create','CategoriesController@create')->name('create');
+        Route::post('/create','CategoriesController@postCreate');
         Route::get('/edit/{id}','CategoriesController@edit')->name('edit');
+        Route::post('/edit/{id}','CategoriesController@postEdit');
+        Route::delete('/delete/{id}','CategoriesController@delete')->name('delete');
     });
 
 });

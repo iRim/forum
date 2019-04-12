@@ -32,7 +32,39 @@ class CategoriesController extends Controller
     }
 
     public function edit($id){
-        dd($id);
+        $model = Categories::findOrFail($id);
+        return view('backend.categories.edit',[
+            'title'=>'Edit category "'.$model->title.'"',
+            'model'=>$model
+        ]);
+    }
+
+    public function create(){
+        return view('backend.categories.create',[
+            'title'=>'Create category',
+            'model'=>new Categories()
+        ]);
+    }
+
+    public function postCreate(Request $request){
+        $category = Categories::firstOrNew($request->except('_token'));
+        $category->author_id = \Auth::id();
+        if($category->save()){
+            return redirect()->route('backend.categories.list');
+        }
+        return redirect()->back();
+    }
+
+    public function postEdit($id,Request $request){
+        $category = Categories::findOrFail($id);
+        if($category->update($request->except('_token'))){
+            return redirect()->route('backend.categories.list');
+        }
+        return redirect()->back();
+    }
+
+    public function delete(Request $request){
+        dd($request);
     }
 
 }
