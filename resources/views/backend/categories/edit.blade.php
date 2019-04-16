@@ -4,7 +4,7 @@
 
     {!! Form::model($model,['route'=>['backend.categories.edit',$model->id]]) !!}
         @include('backend.categories._form')
-        {!! Form::submit('Create category', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Edit category', ['class'=>'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 

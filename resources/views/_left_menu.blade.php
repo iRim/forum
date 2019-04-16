@@ -11,7 +11,7 @@
         @auth('admin')
             @if (!empty(config('settings.backend.menu')))
                 <hr>
-                <h6>Adminisration menu</h6>
+                <h6 class="ml-3">Adminisration menu</h6>
                 <ul class="nav flex-column">
                     @each('_left_menu_item', config('settings.backend.menu'), 'menu')
                 </ul>

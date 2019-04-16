@@ -10,10 +10,13 @@
                 <span data-feather="edit"></span>
                 Edit
             </a>
-            <a href="{{ route('backend.categories.delete',$category->id) }}" class="btn btn-danger">
-                <span data-feather="delete"></span>
-                Delete
-            </a>
+            <span class="btn btn-danger">
+                    <span data-feather="delete"></span>
+                    Delete
+                {!! Form::open(['route'=>['backend.categories.delete',$category->id]]) !!}
+                    @method('DELETE')
+                {!! Form::close() !!}
+            </span>
         </div>
     </td>
 </tr>
