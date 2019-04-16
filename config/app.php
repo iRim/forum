@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE','en'),
+    'locale' => 'ua',
     'locales'=>['ua','ru'],
 
     /*
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'fallback_locale' => env('APP_LOCALE','en'),
+    'fallback_locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------

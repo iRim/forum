@@ -16,24 +16,23 @@ class CheckLang
      */
     public function handle($request, Closure $next)
     {
-        $segment = $request->segment(1);
+        // $segment = $request->segment(1);
 
-        if(!empty($segment)){
-            if($segment == config('app.locale')){
-                $segments = $request->segments();
-                unset($segments[0]);
-                return redirect()->to(implode('/',$segments));
-            }
-        } else {
-            $segment = config('app.locale');
-        }
+        // if(!empty($segment)){
+        //     if($segment == config('app.locale')){
+        //         $segments = $request->segments();
+        //         unset($segments[0]);
+        //         return redirect()->to(implode('/',$segments));
+        //     }
+        // } else {
+        //     $segment = config('app.locale');
+        // }
 
-        dd($request->segments());
-
-        if (in_array($segment, config('app.locales'))) {
-            App::setLocale($segment);
+        // if (in_array($segment, config('app.locales'))) {
+        //     App::setLocale($segment);
+        //     request()->setLocale($segment);
             return $next($request);
-        }
-        abort(404,'Need language!');
+        // }
+        // abort(404,'Need language!');
     }
 }

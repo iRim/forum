@@ -12,6 +12,8 @@ class CategoriesController extends Controller
 
     public function index(Request $request){
 
+        dd(request()->getDefaultLocale());
+
         return view('backend.categories.index',[
             'title'=>'Categories List',
             'categories'=>Categories::all(),

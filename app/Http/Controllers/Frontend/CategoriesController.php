@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoriesController extends Controller
 {
 
     public function index(){
+        // dd(request()->getLocale());
         return view('frontend.categories.index',[
-            'title'=>'All categories',
+            'title'=>__('Перелік категорій'),
             'categories'=>[]
         ]);
     }
