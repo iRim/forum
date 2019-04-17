@@ -1,11 +1,15 @@
 <?php
 request()->setDefaultLocale(config('app.locale'));
+
 Route::pattern('lang','[a-z]{2}');
 
-Route::prefix('/{lang?}')->middleware('CheckLang')->group(function(){
+Route::get('/',function(){
+    return redirect()->route('frontend.categories.list',['lang'=>request()->getLocale()]);
+});
+
+Route::prefix('{lang}')->middleware(['CheckLang'])->group(function(){
 
     Route::namespace('Backend')->prefix('backend')->name('backend.')->middleware(['auth','admin'])->group(function(){
-        // dd(request()->getDefaultLocale());
 
         Route::get('/',function(){
             return redirect()->route('backend.categories.list');

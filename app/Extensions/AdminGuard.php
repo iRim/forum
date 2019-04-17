@@ -13,6 +13,6 @@ class AdminGuard
     }
 
     public function check(){
-        return $this->__user->isAdmin();
+        return ($this->__user && $this->__user->isAdmin())?true:false;
     }
 }

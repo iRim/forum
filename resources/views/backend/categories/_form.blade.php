@@ -1,11 +1,11 @@
 <div class="form-group">
-    {!! Form::label('title', 'Title') !!}
+    {!! Form::label('title', __('messages.backend.categories.fields.title')) !!}
     {!! Form::text('title', $model->title, [
         'class'=>'form-control',
         'id'=>'title',
-        'placeholder'=>'Category title'
+        'placeholder'=>__('messages.backend.categories.fields.title')
     ]) !!}
-    <small class="form-text text-muted">Description for category title.</small>
+    <small class="form-text text-muted">{{ __('messages.backend.categories.descriptions.title') }}</small>
 </div>
 
 <div class="form-group">

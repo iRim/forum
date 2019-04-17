@@ -11,11 +11,8 @@ class CategoriesController extends Controller
 {
 
     public function index(Request $request){
-
-        dd(request()->getDefaultLocale());
-
         return view('backend.categories.index',[
-            'title'=>'Categories List',
+            'title'=>__('messages.backend.categories.list.title'),
             'categories'=>Categories::all(),
         ]);
     }
@@ -30,7 +27,7 @@ class CategoriesController extends Controller
 
     public function create(){
         return view('backend.categories.create',[
-            'title'=>'Create category',
+            'title'=>__('messages.backend.categories.create.title'),
             'model'=>new Categories()
         ]);
     }

@@ -8,9 +8,9 @@ class CategoriesController extends Controller
 {
 
     public function index(){
-        // dd(request()->getLocale());
+
         return view('frontend.categories.index',[
-            'title'=>__('Перелік категорій'),
+            'title'=>__('messages.frontend.categories.list.title'),
             'categories'=>[]
         ]);
     }

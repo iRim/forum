@@ -14,27 +14,27 @@
                 {{ config('app.name', 'Laravel') }}
             </a>
 
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-dark w-100" type="text" placeholder="{{ __('messages.frontend.search') }}" aria-label="Search">
 
             <ul class="navbar-nav px-6">
                 @guest
                     <li class="nav-item text-nowrap">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('messages.frontend.auth.login.title') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item text-nowrap">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('messages.frontend.auth.register.title') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Profile <span class="caret"></span>
+                            {{ __('messages.frontend.auth.profile.title') }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Logout
+                                {{ __('messages.frontend.auth.profile.logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
