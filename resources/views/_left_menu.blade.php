@@ -22,7 +22,7 @@
             <h6>{{ __('Мови') }}</h6>
             <div class="btn-group" role="group">
                 @foreach (config('app.locales') as $locale)
-                    <a href="{{ route(Route::currentRouteName(),['lang'=>$locale]) }}" class="btn btn-secondary {{ App::getLocale() == $locale?'active':'' }}">{{ __('messages.'.$locale) }}</a>
+                    <a href="{{ route(Route::currentRouteName(),array_merge(request()->route()->parameters(),['lang'=>$locale])) }}" class="btn btn-secondary {{ App::getLocale() == $locale?'active':'' }}">{{ __('messages.'.$locale) }}</a>
                 @endforeach
             </div>
         </div>

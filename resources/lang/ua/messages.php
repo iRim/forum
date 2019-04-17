@@ -49,13 +49,18 @@ return [
             ],
             'fields'=>[
                 'title'=>'Назва',
+                'description'=>'Описання',
                 'author'=>'Автор',
                 'created_at'=>'Створена',
                 'active'=>'Активна',
-                'actions'=>'Дії'
+                'actions'=>'Дії',
+                'active_on'=>'Ввім',
+                'active_off'=>'Вимк',
+
             ],
             'descriptions'=>[
-                'title'=>'Опис для назви категорії'
+                'title'=>'Опис для назви категорії',
+                'description'=>'Опис для опису'
             ],
             'list'=>[
                 'title'=>'Усі категорії',

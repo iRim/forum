@@ -4,7 +4,7 @@
 
     {!! Form::model($model,['route'=>'backend.categories.create']) !!}
         @include('backend.categories._form')
-        {!! Form::submit('Create category', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit(__('messages.backend.categories.buttons.create'), ['class'=>'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 

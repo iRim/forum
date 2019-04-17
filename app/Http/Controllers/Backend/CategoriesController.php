@@ -17,7 +17,7 @@ class CategoriesController extends Controller
         ]);
     }
 
-    public function edit($id){
+    public function edit($lang,$id){
         $model = Categories::findOrFail($id);
         return view('backend.categories.edit',[
             'title'=>'Edit category "'.$model->title.'"',
