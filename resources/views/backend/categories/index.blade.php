@@ -10,14 +10,6 @@
 @endsection
 
 @section('content')
-    @if (Session::has('messages'))
-        @foreach (Session::get('messages') as $alert)
-            <div class="alert alert-{{ !empty($alert['type'])?$alert['type']:'info' }}" role="alert">
-                {{ $alert['message'] }}
-            </div>
-        @endforeach
-    @endif
-
     @if (count($categories)>0)
         <table class="table">
             <thead>

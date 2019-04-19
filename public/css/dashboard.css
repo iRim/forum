@@ -120,6 +120,10 @@ body {
   vertical-align: top;
 }
 
+.table small > p {
+  margin-bottom: 0;
+}
+
 @supports (position: -webkit-sticky) or (position: sticky) {
   .sidebar-sticky {
     position: -webkit-sticky;

@@ -57,6 +57,13 @@
                     @section('title')
                         @include('_title')
                     @show
+                    @if (Session::has('messages'))
+                        @foreach (Session::get('messages') as $alert)
+                            <div class="alert alert-{{ !empty($alert['type'])?$alert['type']:'info' }}" role="alert">
+                                {{ $alert['message'] }}
+                            </div>
+                        @endforeach
+                    @endif
                     @yield('content')
                 </main>
         </div>

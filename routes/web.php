@@ -38,7 +38,12 @@ Route::prefix('{lang}')->middleware(['CheckLang'])->group(function(){
         Route::name('topics.')->group(function(){
             Route::get('/category/{category_id}/topic/create','TopicsController@create')->name('create');
             Route::post('/category/{category_id}/topic/create','TopicsController@postCreate');
-            Route::get('/category/{category_id}/topic/{topic_id}','TopicsController@index')->name('view');
+            Route::get('/category/{category_id}/topic/{topic_id}','TopicsController@view')->name('view');
+        });
+
+        Route::name('comments.')->group(function(){
+            Route::get('/category/{category_id}/topic/{topic_id}/create','CommentsController@create')->name('create');
+            Route::post('/category/{category_id}/topic/{topic_id}/create','CommentsController@postCreate');
         });
     });
 
