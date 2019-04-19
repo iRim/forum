@@ -18,6 +18,7 @@ class CreateTopicsTable extends Migration
             $table->bigInteger('author_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->string('title');
+            $table->text('description');
             $table->smallInteger('active')->unsigned()->default(1)->nullable();
             $table->smallInteger('position')->unsigned()->default(0)->nullable();
             $table->timestamps();

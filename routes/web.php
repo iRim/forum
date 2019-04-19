@@ -1,6 +1,8 @@
 <?php
 request()->setDefaultLocale(config('app.locale'));
 
+Route::pattern('category_id','\d+');
+Route::pattern('topic_id','\d+');
 Route::pattern('lang','[a-z]{2}');
 
 Route::get('/',function(){
@@ -19,9 +21,9 @@ Route::prefix('{lang}')->middleware(['CheckLang'])->group(function(){
             Route::get('/','CategoriesController@index')->name('list');
             Route::get('/create','CategoriesController@create')->name('create');
             Route::post('/create','CategoriesController@postCreate');
-            Route::get('/edit/{id}','CategoriesController@edit')->name('edit');
-            Route::post('/edit/{id}','CategoriesController@postEdit');
-            Route::delete('/delete/{id}','CategoriesController@delete')->name('delete');
+            Route::get('/edit/{category_id}','CategoriesController@edit')->name('edit');
+            Route::post('/edit/{category_id}','CategoriesController@postEdit');
+            Route::delete('/delete/{category_id}','CategoriesController@delete')->name('delete');
         });
 
     });
@@ -30,8 +32,14 @@ Route::prefix('{lang}')->middleware(['CheckLang'])->group(function(){
 
         Route::name('categories.')->group(function(){
             Route::get('/', 'CategoriesController@index')->name('list');
+            Route::get('/category/{category_id}','CategoriesController@view')->name('view');
         });
 
+        Route::name('topics.')->group(function(){
+            Route::get('/category/{category_id}/topic/create','TopicsController@create')->name('create');
+            Route::post('/category/{category_id}/topic/create','TopicsController@postCreate');
+            Route::get('/category/{category_id}/topic/{topic_id}','TopicsController@index')->name('view');
+        });
     });
 
     Auth::routes();

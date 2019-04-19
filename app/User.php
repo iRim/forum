@@ -41,4 +41,8 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+
+    public function fullName(){
+        return trim(implode(' ',[$this->last_name,$this->first_name]));
+    }
 }

@@ -15,8 +15,14 @@ class CreateCommentsFilesTable extends Migration
     {
         Schema::create('comments_files', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('topic_id')->unsigned();
             $table->integer('comment_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('file');
+
+            $table->foreign('topic_id')->references('id')->on('topics');
+            $table->foreign('comment_id')->references('id')->on('comments');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('author_id');
             $table->string('title');
-            $table->text('description')->default(null);
+            $table->text('description')->default(null)->nullable();
             $table->unsignedSmallInteger('active')->default(0)->nullable();
             $table->timestamps();
 

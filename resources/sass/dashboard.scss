@@ -112,6 +112,9 @@ body {
 .table td, .table th{
     vertical-align: middle
 }
+.table td.va-top{
+    vertical-align: top;
+}
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
     .sidebar-sticky {

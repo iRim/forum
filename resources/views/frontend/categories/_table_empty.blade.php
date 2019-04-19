@@ -1,3 +1,5 @@
-<div class="alert alert-danger" role="alert">
-    Categories is Empty!!!
-</div>
+<tr class="table-danger">
+    <td colspan="4">
+        {{ __('Немає категорій') }}
+    </td>
+</tr>

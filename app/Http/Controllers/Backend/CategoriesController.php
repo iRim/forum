@@ -41,7 +41,7 @@ class CategoriesController extends Controller
         return redirect()->back();
     }
 
-    public function postEdit($id,Request $request){
+    public function postEdit($lang,$id,Request $request){
         $category = Categories::findOrFail($id);
         if($category->update($request->except('_token'))){
             return redirect()->route('backend.categories.list');
