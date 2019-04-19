@@ -17,4 +17,8 @@
     </div>
 
     @each('frontend.comments.view', $comments, 'comment', 'frontend.comments.empty')
+    {{ $comments->links('layouts._pagination',[
+        'category_id'=>$topic->category_id,
+        'topic_id'=>$topic->id
+    ]) }}
 @endsection

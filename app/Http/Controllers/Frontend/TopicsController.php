@@ -43,14 +43,14 @@ class TopicsController extends Controller
         return redirect()->back();
     }
 
-    public function view(Request $request,$lang,$category_id,$topic_id){
+    public function view(Request $request,$lang,$category_id,$topic_id,$page = 1){
         $topic = Topics::findOrFail($topic_id);
         return view('frontend.topics.view',[
             'title'=>__('messages.frontend.topics.view.title',[
                 'title'=>$topic->title
             ]),
             'topic'=>$topic,
-            'comments'=>$topic->comments
+            'comments'=>$topic->comments()->paginate(5, ['*'], 'page', $page)
         ]);
     }
 

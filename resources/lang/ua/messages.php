@@ -20,6 +20,10 @@ return [
             ],
             'forgot'=>[
                 'title'=>'Нагадати пароль?',
+                'email'=>'Улектронна пошта',
+                'password'=>'Пароль',
+                'confirm_password'=>'Повторити пароль',
+                'button1'=>'Надіслати пароль'
             ],
 
             'password'=>'Пароль',
@@ -106,6 +110,36 @@ return [
                 'title'=>'Додаємо категорію',
             ]
 
+        ],
+        'users'=>[
+            'title'=>'Користувачі',
+            'menu'=>[
+                'list'=>'Перелік',
+                'create'=>'Додати',
+            ],
+            'fields'=>[
+                'first_name'=>'Ім\'я',
+                'last_name'=>'Прізвище',
+                'email'=>'Email',
+                'role'=>'Роль',
+                'active'=>'Активність',
+                'actions'=>'Дії',
+                'role_user'=>'Користувач',
+                'role_admin'=>'Адміністратор',
+                'active_on'=>'ON',
+                'active_off'=>'OFF',
+                'password'=>'Пароль',
+                'password_confirmation'=>'Повторити пароль'
+            ],
+            'list'=>[
+                'title'=>'Перелік користувачів'
+            ],
+            'buttons'=>[
+                'create'=>'Додати користувача'
+            ],
+            'create'=>[
+                'title'=>'Додавання нового користувача'
+            ]
         ]
 
     ]

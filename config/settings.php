@@ -33,22 +33,22 @@ return [
                     ]
                 ]
             ],
-            // [
-            //     'icon'=>'users',
-            //     'title'=>'Users',
-            //     'childrens'=>[
-            //         [
-            //             'icon'=>'list',
-            //             'title'=>'List',
-            //             'url'=>'backend.users.list',
-            //         ],
-            //         [
-            //             'icon'=>'plus',
-            //             'title'=>'Create',
-            //             'url'=>'backend.users.create',
-            //         ]
-            //     ]
-            // ]
+            [
+                'icon'=>'users',
+                'title'=>'messages.backend.users.title',
+                'childrens'=>[
+                    [
+                        'icon'=>'list',
+                        'title'=>'messages.backend.users.menu.list',
+                        'url'=>'backend.users.list',
+                    ],
+                    [
+                        'icon'=>'plus',
+                        'title'=>'messages.backend.users.menu.create',
+                        'url'=>'backend.users.create',
+                    ]
+                ]
+            ]
         ]
     ]
 ];

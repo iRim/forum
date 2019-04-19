@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Frontend\Comments;
+use Illuminate\Contracts\Auth\Guard;
 
 class CommentsController extends Controller
 {
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+        $this->middleware('auth', ['only' => ['create', 'postCreate']]);
+    }
 
     public function create(){
         return view('frontend.comments.create',[

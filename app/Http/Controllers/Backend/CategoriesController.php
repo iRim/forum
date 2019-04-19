@@ -17,8 +17,8 @@ class CategoriesController extends Controller
         ]);
     }
 
-    public function edit($lang,$id){
-        $model = Categories::findOrFail($id);
+    public function edit($lang,$category_id){
+        $model = Categories::findOrFail($category_id);
         return view('backend.categories.edit',[
             'title'=>'Edit category "'.$model->title.'"',
             'model'=>$model
@@ -41,17 +41,17 @@ class CategoriesController extends Controller
         return redirect()->back();
     }
 
-    public function postEdit($lang,$id,Request $request){
-        $category = Categories::findOrFail($id);
+    public function postEdit($lang,$category_id,Request $request){
+        $category = Categories::findOrFail($category_id);
         if($category->update($request->except('_token'))){
             return redirect()->route('backend.categories.list');
         }
         return redirect()->back();
     }
 
-    public function delete(Request $request,$id){
+    public function delete(Request $request,$lang,$category_id){
         $messages = [];
-        $model = Categories::findOrFail($id);
+        $model = Categories::findOrFail($category_id);
         if($model->delete()){
             $messages[] = [
                 'type'=>'success',
