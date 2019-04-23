@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Frontend\Comments;
 use Illuminate\Contracts\Auth\Guard;
+use JsValidator;
 
 class CommentsController extends Controller
 {
@@ -17,9 +18,15 @@ class CommentsController extends Controller
     }
 
     public function create(){
+        $validator = JsValidator::make([
+            'message'=>'required|min:20|max:50'
+        ]);
+
         return view('frontend.comments.create',[
-            'title'=>__('messages.frontend.comments.create.title',[]),
-            'model'=>new Comments()
+            'title'=>__('messages.frontend.comments.create.title'),
+            'model'=>new Comments(),
+        ])->with([
+            'validator'=>$validator
         ]);
     }
 
