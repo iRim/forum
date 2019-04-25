@@ -16,7 +16,9 @@
                 {{ config('app.name', 'Laravel') }}
             </a>
 
-            <input class="form-control form-control-dark w-100" type="text" placeholder="{{ __('messages.frontend.search') }}" aria-label="Search">
+            @section('_search')
+                @include('frontend.search.form')
+            @show
 
             <ul class="navbar-nav px-6">
                 @guest

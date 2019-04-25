@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+
 request()->setDefaultLocale(config('app.locale'));
 
 Route::pattern('id','\d+');
@@ -40,6 +42,8 @@ Route::prefix('{lang}')->middleware(['CheckLang'])->group(function(){
     });
 
     Route::namespace('Frontend')->name('frontend.')->group(function(){
+
+        Route::post('/search','SearchController@index')->name('search');
 
         Route::name('categories.')->group(function(){
             Route::get('/', 'CategoriesController@index')->name('list');

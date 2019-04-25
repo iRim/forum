@@ -52,7 +52,7 @@ return [
                 'button'=>'Додати тему'
             ],
             'view'=>[
-                'title'=>'Тема ":title"'
+                'title'=>'Тема ":title"',
             ]
         ],
         'comments'=>[
@@ -64,7 +64,13 @@ return [
                 'message'=>'Комментар'
             ]
         ],
-        'search'=>'Пошук',
+        'search'=>[
+            'title'=>'Пошук',
+            'params'=>'Ви шукали ":params"',
+            'topics'=>'Знайдені теми',
+            'comments'=>'Знайдені комментарі',
+            'update'=>'Останнє оновлення'
+        ],
 
         'last_comment'=>[
             'topic'=>'Тема',
