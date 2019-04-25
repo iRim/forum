@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Frontend\Topics;
 use Illuminate\Contracts\Auth\Guard;
 use App\Models\Frontend\Categories;
+use Image;
 
 class TopicsController extends Controller
 {
@@ -26,7 +27,7 @@ class TopicsController extends Controller
     }
 
     public function postCreate(Request $request,$lang,$category_id){
-        $topic = Topics::firstOrNew($request->except('_token'));
+        $topic = Topics::firstOrNew($request->except(['_token','image']));
         $topic->author_id = \Auth::id();
         $topic->category_id = $category_id;
         $topic->created_at = $topic->updated_at = now();

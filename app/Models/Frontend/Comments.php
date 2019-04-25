@@ -25,4 +25,8 @@ class Comments extends Model
         return $this->hasOne(User::class,'id','author_id');
     }
 
+    public function files(){
+        return $this->hasMany(CommentsFiles::class,'comment_id','id');
+    }
+
 }

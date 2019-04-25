@@ -44,7 +44,8 @@ return [
         'topics'=>[
             'fields'=>[
                 'title'=>'Назва теми',
-                'description'=>'Текст теми'
+                'description'=>'Текст теми',
+                'image'=>'Картинка'
             ],
             'create'=>[
                 'title'=>'Додати тему',

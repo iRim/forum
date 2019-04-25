@@ -4,6 +4,17 @@
     <div class="media-body">
         <h5 class="mt-0">{{ $comment->user->fullName() }}</h5>
         {{ $comment->message }}
+        @if ($comment->files->count()>0)
+            <div class="row">
+                @foreach ($comment->files as $file)
+                    <div class="col-sm-2">
+                        <a href="/upload/{{ $file->file }}" target="blank">
+                            <img src="/upload/{{ $file->file }}" class="img-thumbnail">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @endif
         <p class="text-right">{{ (new DateTime($comment->created_at))->format('d.m.Y H:i') }}</p>
     </div>
 </div>

@@ -3,10 +3,9 @@
 @section('content')
     {!! Form::model($model) !!}
         <div class="form-group">
-                {!! Form::label('title', __('messages.frontend.topics.fields.title')) !!}
-                {!! Form::text('title', $model->title, ['class'=>'form-control','placeholder'=>__('messages.frontend.topics.fields.title')]) !!}
-
-            </div>
+            {!! Form::label('title', __('messages.frontend.topics.fields.title')) !!}
+            {!! Form::text('title', $model->title, ['class'=>'form-control','placeholder'=>__('messages.frontend.topics.fields.title')]) !!}
+        </div>
         <div class="form-group">
             {!! Form::label('description', __('messages.frontend.topics.fields.description')) !!}
             {!! Form::textarea('description', $model->message, ['class'=>'form-control','placeholder'=>__('messages.frontend.topics.fields.description')]) !!}

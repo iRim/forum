@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Frontend\Comments;
 use Illuminate\Contracts\Auth\Guard;
 use JsValidator;
+use Image;
 
 class CommentsController extends Controller
 {
@@ -18,8 +19,10 @@ class CommentsController extends Controller
     }
 
     public function create(){
+        $max_size = 1024*1024*10;
         $validator = JsValidator::make([
-            'message'=>'required|min:20|max:50'
+            'message'=>'required|min:20|max:50',
+            'image'=>'required|image|max:'.$max_size
         ]);
 
         return view('frontend.comments.create',[
@@ -31,7 +34,20 @@ class CommentsController extends Controller
     }
 
     public function postCreate(Request $request,$lang,$category_id,$topic_id){
-        $c = Comments::firstOrNew($request->except('_token'));
+        Image::configure(array('driver' => 'imagick'));
+        $filename = null;
+        foreach($request->files AS $file){
+            $filename = implode('.',[
+                microtime(),
+                $file->getClientOriginalName(),
+            ]);
+            $filetype = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = md5($filename).'.'.$filetype;
+            $i = Image::make($file);
+            $i->save(public_path('upload').DIRECTORY_SEPARATOR.$filename);
+        }
+
+        $c = Comments::firstOrNew($request->except(['_token','image']));
         $c->author_id = \Auth::id();
         $c->category_id = $category_id;
         $c->topic_id = $topic_id;
@@ -39,6 +55,18 @@ class CommentsController extends Controller
         if($c->save()){
             $c->category->updated_at = now();
             $c->category->save();
+
+            if(!empty($filename)){
+                // dd($filename);
+                $c->files()->create([
+                    'topic_id'=>$c->topic_id,
+                    'comment_id'=>$c->id,
+                    'user_id'=>$c->author_id,
+                    'file'=>$filename
+                ]);
+            }
+
+
             return redirect()->route('frontend.topics.view',['category_id'=>$category_id,'topic_id'=>$topic_id])->with('messages',[
                 [
                     'type'=>'success',
