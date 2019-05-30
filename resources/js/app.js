@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
+window.$ = window.jQuery = $ = require('jquery');
 require('./bootstrap');
 require('./jsvalidation.min');
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Frontend\Topics;
 use Illuminate\Contracts\Auth\Guard;
 use App\Models\Frontend\Categories;
+use JsValidator;
 use Image;
 
 class TopicsController extends Controller
@@ -20,9 +21,15 @@ class TopicsController extends Controller
 
 
     public function create($lang,$category_id){
+        $validator = JsValidator::make([
+            'message'=>'required',
+            'description'=>'required'
+        ]);
         return view('frontend.topics.create',[
             'title'=>__('messages.frontend.topics.create.title'),
             'model'=>new Topics()
+        ])->with([
+            'validator'=>$validator
         ]);
     }
 

@@ -7,6 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}{{ isset($title)?' - '.$title:'' }}</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -70,7 +71,5 @@
                 </main>
         </div>
         </div>
-
-        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
