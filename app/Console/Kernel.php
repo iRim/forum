@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Frontend\Categories;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +27,16 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->call(function () {
+            // Categories::generateNew();
+            $new = new Categories();
+            $new->author_id = 1;
+            $new->active = 1;
+            $new->title = 'Category '.time();
+            $new->description = 'Description '.time();
+            $new->save();
+        })->everyThirtyMinutes();
     }
 
     /**

@@ -24,4 +24,13 @@ class Categories extends Model
         return $this->topics()->where('active',1);
     }
 
+    static function generateNew(){
+        $new = new self;
+        $new->author_id = 1;
+        $new->active = 1;
+        $new->title = 'Category '.time();
+        $new->description = 'Description '.time();
+        $new->save();
+    }
+
 }
